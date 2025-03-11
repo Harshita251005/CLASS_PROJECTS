@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: url('https://source.unsplash.com/1600x900/?nature,abstract') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    transition: background 0.3s, color 0.3s;
+    background: linear-gradient(to right, #b7e4f9, #cdeffb, #cef0fc, #fdfffe, #c4edf9);
+
+}
+
+.container {
+    width: 400px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 240, 240, 0.95));
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.dark-mode {
+    background: radial-gradient(circle, #004f67, #002c40);
+    color: white;
+}
+
+.dark-mode .container {
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.1);
+}
+
+h2 {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+h2 i {
+    color: #ff9800;
+}
+
+input, select {
+    width: 80%;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 12px;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #ff9800;
+    outline: none;
+}
+
+button {
+    padding: 12px 18px;
+    border: none;
+    background: linear-gradient(135deg, #1F2937, #111827);
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #374151, #1F2937);
+    transform: scale(1.05);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+li:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.priority-high { color: red; font-weight: bold; }
+.priority-medium { color: orange; }
+.priority-low { color: green; }
+
+.dark-mode-toggle {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.dark-mode-toggle:hover {
+    transform: rotate(20deg);
+}

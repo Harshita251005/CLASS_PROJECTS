@@ -55,6 +55,16 @@ public class InventoryLinkedList {
         }
         return null;
     }
+    public Medicine searchByName(String name) {
+        Node current = head;
+        while (current != null) {
+            if (current.data.getName().equalsIgnoreCase(name)) {
+                return current.data;
+            }
+            current = current.next;
+        }
+        return null;
+    }
 
     public boolean updateQuantity(String id, int newQuantity) {
         Medicine med = searchById(id);

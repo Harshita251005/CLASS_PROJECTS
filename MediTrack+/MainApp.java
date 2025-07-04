@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 
 public class MainApp {
@@ -10,6 +12,8 @@ public class MainApp {
     private static final ExpiryQueue expiryQueue = new ExpiryQueue();
     private static MedicineBST bst = new MedicineBST();
     private static final SymptomSearch symptomSearch = new SymptomSearch();
+    private static List<MedicineBooking> bookings = new ArrayList<>();
+
 
     public static void main(String[] args) {
         loadSampleData();
@@ -24,20 +28,64 @@ public class MainApp {
             handleChoice(choice);
         } while (choice != 0);
 
-        System.out.println(" Thank you for using MediTrack+. Stay healthy!");
+        System.out.println("Thank you for using MediTrack+. Stay healthy!");
     }
+    private static void bookMedicine() {
+        String medicineName = getStringInput("Enter medicine name to book: ");
+        int quantity = getIntegerInput("Enter quantity to book: ");
+        
+        Medicine medicine = inventory.searchByName(medicineName);
+    
+        if (medicine != null) {
+            if (medicine.getQuantity() >= quantity) {
+                String userName = getStringInput("Enter your name: ");
+                String contact = getStringInput("Enter your contact: ");
+    
+                
+                medicine.setQuantity(medicine.getQuantity() - quantity);
+    
+                
+                MedicineBooking booking = new MedicineBooking(medicineName, quantity, userName, contact);
+                bookings.add(booking);
+    
+                System.out.println("\nBooking Successful!");
+                booking.displayBooking();  
+    
+                refreshDataStructures(); 
+            } else {
+                System.out.println("Not enough stock available. Only " + medicine.getQuantity() + " units in stock.");
+            }
+        } else {
+            System.out.println("Medicine not found in inventory.");
+        }
+    }
+    
+    private static void displayAllBookings() {
+        if (bookings.isEmpty()) {
+            System.out.println("No bookings available.");
+        } else {
+            System.out.println("\n======= All Bookings =======");
+            for (MedicineBooking booking : bookings) {
+                booking.displayBooking(); 
+                System.out.println("----------------------------");
+            }
+        }
+    }
+    
 
     private static void showMenu() {
-        System.out.println("\n=========  MediTrack+ Pharmacy System =========");
+        System.out.println("\n========= MediTrack+ Pharmacy System =========");
         System.out.println("1.  View Inventory");
         System.out.println("2.  Add New Medicine");
         System.out.println("3.  Remove Medicine by ID");
         System.out.println("4.  Search Medicine by Name (BST)");
         System.out.println("5.  Display Medicines Alphabetically");
         System.out.println("6.  Show Expired Medicines");
-        System.out.println("7.   Show Medicines Expiring Soon");
+        System.out.println("7.  Show Medicines Expiring Soon");
         System.out.println("8.  Get Medicine Suggestions by Symptom");
         System.out.println("9.  Remove Expired Medicines");
+        System.out.println("10. Booking Medicine");
+        System.out.println("11. View All Bookings");
         System.out.println("0.  Exit");
     }
 
@@ -52,15 +100,32 @@ public class MainApp {
             case 7 -> showExpiringSoon();
             case 8 -> suggestBySymptom();
             case 9 -> removeExpiredMedicines();
-            case 0 -> {} 
-            default -> System.out.println(" Invalid option. Please try again.");
+            case 10 -> bookMedicine();
+            case 11 -> displayAllBookings();  
+            case 0 -> {} // exit
+            default -> System.out.println("Invalid option. Please try again.");
         }
     }
 
     private static void addNewMedicine() {
         String name = getStringInput("Enter Medicine Name: ");
         String id = getStringInput("Enter ID: ");
-        LocalDate expiry = LocalDate.parse(getStringInput("Enter Expiry Date (YYYY-MM-DD): "));
+        
+       
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate expiry = null;
+        boolean validDate = false;
+
+        while (!validDate) {
+            String input = getStringInput("Enter Expiry Date (dd-MM-yyyy): ");
+            try {
+                expiry = LocalDate.parse(input, formatter);
+                validDate = true;
+            } catch (DateTimeParseException e) {
+                System.out.println(" Invalid date format. Please enter as dd-MM-yyyy (e.g., 03-05-2025).");
+            }
+        }
+
         int qty = getIntegerInput("Enter Quantity: ");
 
         Medicine med = new Medicine(name, id, expiry, qty);
@@ -81,9 +146,9 @@ public class MainApp {
         String name = getStringInput("Enter medicine name to search: ");
         Medicine found = bst.search(name);
         if (found != null)
-            System.out.println(" Found:\n" + found);
+            System.out.println("Found:\n" + found);
         else
-            System.out.println(" Medicine not found.");
+            System.out.println("Medicine not found.");
     }
 
     private static void showExpiringSoon() {
@@ -97,9 +162,9 @@ public class MainApp {
         List<String> suggestions = symptomSearch.getSuggestions(symptom);
 
         if (suggestions.isEmpty()) {
-            System.out.println(" No suggestions available for this symptom.");
+            System.out.println("No suggestions available for this symptom.");
         } else {
-            System.out.println(" Suggested Medicines:");
+            System.out.println("Suggested Medicines:");
             suggestions.forEach(med -> System.out.println(" - " + med));
         }
     }
@@ -117,17 +182,20 @@ public class MainApp {
 
     private static void loadSampleData() {
         try (Scanner fileScanner = new Scanner(new File("sample_data.txt"))) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             while (fileScanner.hasNextLine()) {
                 String[] data = fileScanner.nextLine().split(",");
                 String name = data[0].trim();
                 String id = data[1].trim();
-                LocalDate expiry = LocalDate.parse(data[2].trim());
+                LocalDate expiry = LocalDate.parse(data[2].trim(), formatter);
                 int qty = Integer.parseInt(data[3].trim());
                 inventory.addMedicine(new Medicine(name, id, expiry, qty));
             }
             System.out.println(" Sample data loaded.");
         } catch (FileNotFoundException e) {
             System.out.println(" sample_data.txt not found. Starting with empty inventory.");
+        } catch (DateTimeParseException e) {
+            System.out.println(" Date format in sample_data.txt is invalid. Please use dd-MM-yyyy format.");
         }
     }
 
@@ -138,6 +206,14 @@ public class MainApp {
 
     private static int getIntegerInput(String prompt) {
         System.out.print(prompt);
-        return Integer.parseInt(sc.nextLine().trim());
+        while (true) {
+            try {
+                return Integer.parseInt(sc.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.print(" Invalid number. Please enter a valid integer: ");
+            }
+        }
     }
+   
+    
 }

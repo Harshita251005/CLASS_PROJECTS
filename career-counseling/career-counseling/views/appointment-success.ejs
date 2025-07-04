@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Appointment Confirmed</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body.result-body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #dff9fb, #f4f4f4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .result-container {
+      background-color: #ffffff;
+      padding: 40px 50px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      animation: slideIn 1s ease-out;
+    }
+
+    .result-container h1 {
+      font-size: 2rem;
+      color: #2ecc71;
+      margin-bottom: 15px;
+    }
+
+    .result-container p {
+      font-size: 1.2rem;
+      color: #34495e;
+      margin-bottom: 30px;
+    }
+
+    .back-btn {
+      text-decoration: none;
+      background-color: #27ae60;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #2ecc71;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body class="result-body">
+  <div class="result-container" id="confirmationBox">
+    <h1>Appointment Booked Successfully!</h1>
+    <p>We'll reach out to you at your email.</p>
+    <a href="/" class="back-btn">Go Back Home</a>
+  </div>
+
+  <script>
+    // Slide in animation using JavaScript (optional for future features)
+    document.addEventListener("DOMContentLoaded", () => {
+      const box = document.getElementById("confirmationBox");
+      box.style.opacity = 0;
+      setTimeout(() => {
+        box.style.transition = "opacity 1s ease";
+        box.style.opacity = 1;
+      }, 200);
+    });
+  </script>
+</body>
+</html>

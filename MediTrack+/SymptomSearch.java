@@ -6,8 +6,6 @@ public class SymptomSearch {
 
     public SymptomSearch() {
         symptomMap = new HashMap<>();
-
-        // Predefined symptom-to-medicine mappings
         symptomMap.put("fever", Arrays.asList("Paracetamol", "Calpol", "Dolo"));
         symptomMap.put("headache", Arrays.asList("Saridon", "Disprin", "Paracetamol"));
         symptomMap.put("cold", Arrays.asList("Cetirizine", "Zyrtec", "Sinarest"));

@@ -1,0 +1,181 @@
+{
+    "helpRequests": [
+        {
+            "id": 1,
+            "name": "Ramesh Kumar",
+            "category": "Medical",
+            "description": "Urgent requirement for O+ blood for a surgery at City Hospital. Patient is in critical condition.",
+            "city": "New Delhi",
+            "contact": "9876543210",
+            "status": "Open",
+            "date": "2023-10-15"
+        },
+        {
+            "id": 2,
+            "name": "Sunita Devi",
+            "category": "Education",
+            "description": "Need textbooks and stationery for 5th grade student. Cannot afford due to financial crisis.",
+            "city": "Mumbai",
+            "contact": "sunita@email.com",
+            "status": "Fulfilled",
+            "date": "2023-10-12"
+        },
+        {
+            "id": 3,
+            "name": "Local Shelter",
+            "category": "Food",
+            "description": "Food donation required for 50 people at the homeless shelter this weekend.",
+            "city": "Bangalore",
+            "contact": "9988776655",
+            "status": "Open",
+            "date": "2023-10-18"
+        },
+        {
+            "id": 4,
+            "name": "Amit Singh",
+            "category": "Lost & Found",
+            "description": "Lost a black leather wallet containing ID cards near Central Park. Please help if found.",
+            "city": "Pune",
+            "contact": "amit.s@email.com",
+            "status": "Open",
+            "date": "2023-10-19"
+        },
+        {
+            "id": 5,
+            "name": "Old Age Home",
+            "category": "Old-age",
+            "description": "Volunteers needed to spend time with elderly residents on Sunday evening.",
+            "city": "Chennai",
+            "contact": "care@oldagehome.org",
+            "status": "Open",
+            "date": "2023-10-20"
+        }
+    ],
+    "volunteers": [
+        {
+            "id": 1,
+            "name": "Priya Sharma",
+            "skills": [
+                "Teaching",
+                "Counseling"
+            ],
+            "availability": "Weekends",
+            "location": "New Delhi",
+            "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+        },
+        {
+            "id": 2,
+            "name": "Rahul Verma",
+            "skills": [
+                "Medical",
+                "Emergency Support"
+            ],
+            "availability": "Anytime",
+            "location": "Mumbai",
+            "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+        },
+        {
+            "id": 3,
+            "name": "Anjali Gupta",
+            "skills": [
+                "Food Donation",
+                "Event Management"
+            ],
+            "availability": "Weekdays",
+            "location": "Bangalore",
+            "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+        }
+    ],
+    "ngos": [
+        {
+            "id": 1,
+            "name": "Smile Foundation",
+            "category": "Child Care",
+            "address": "Vasant Kunj, New Delhi",
+            "website": "https://www.smilefoundationindia.org",
+            "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        },
+        {
+            "id": 2,
+            "name": "Green Earth",
+            "category": "Environment",
+            "address": "Bandra West, Mumbai",
+            "website": "https://www.greenearth.org",
+            "image": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        },
+        {
+            "id": 3,
+            "name": "Women Power",
+            "category": "Women Safety",
+            "address": "Koramangala, Bangalore",
+            "website": "https://www.womenpower.org",
+            "image": "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        },
+        {
+            "id": 4,
+            "name": "Paws & Claws",
+            "category": "Animal Rescue",
+            "address": "Adyar, Chennai",
+            "website": "https://www.pawsandclaws.org",
+            "image": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        }
+    ],
+    "events": [
+        {
+            "id": 1,
+            "title": "Mega Blood Donation Camp",
+            "date": "2023-11-15",
+            "time": "10:00 AM - 4:00 PM",
+            "venue": "Community Hall, Sector 18, Noida",
+            "description": "Join us for a life-saving blood donation drive. Every drop counts!",
+            "image": "https://images.unsplash.com/photo-1615461066841-6116e61058f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        },
+        {
+            "id": 2,
+            "title": "Winter Clothes Collection",
+            "date": "2023-11-20",
+            "time": "9:00 AM - 6:00 PM",
+            "venue": "City Center Mall, MG Road, Gurgaon",
+            "description": "Donate your old warm clothes to help the homeless survive the winter.",
+            "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        },
+        {
+            "id": 3,
+            "title": "Tree Plantation Drive",
+            "date": "2023-11-25",
+            "time": "8:00 AM - 11:00 AM",
+            "venue": "Lodi Gardens, New Delhi",
+            "description": "Let's make our city greener. Saplings and tools will be provided.",
+            "image": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        }
+    ],
+    "blogs": [
+        {
+            "id": 1,
+            "title": "Understanding Mental Health: Breaking the Stigma",
+            "category": "Mental Health",
+            "excerpt": "Mental health is just as important as physical health. Learn how to identify signs of stress and anxiety.",
+            "content": "Full content here...",
+            "readTime": "5 min read",
+            "image": "https://images.unsplash.com/photo-1527137342181-191f532c0e88?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        },
+        {
+            "id": 2,
+            "title": "Child Labor: A Blot on Humanity",
+            "category": "Child Labor",
+            "excerpt": "Millions of children are forced into labor. Here is what we can do to stop it and ensure their education.",
+            "content": "Full content here...",
+            "readTime": "4 min read",
+            "image": "https://images.unsplash.com/photo-1603787081207-362bcef7c144?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        },
+        {
+            "id": 3,
+            "title": "Women Safety: Rights and Laws in India",
+            "category": "Women Safety",
+            "excerpt": "Every woman should know her legal rights. A comprehensive guide to laws protecting women in India.",
+            "content": "Full content here...",
+            "readTime": "6 min read",
+            "image": "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        }
+    ]
+}
